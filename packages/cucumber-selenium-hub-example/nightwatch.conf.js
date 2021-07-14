@@ -39,6 +39,14 @@ module.exports = {
         }
       }
     },
+    opera: {
+      desiredCapabilities: {
+        browserName: 'opera',
+        'goog:chromeOptions': {
+          w3c: false
+        }
+      }
+    },
     edge: {
       desiredCapabilities: {
         browserName: "MicrosoftEdge",
@@ -52,6 +60,17 @@ module.exports = {
         javascriptEnabled: true,
         acceptSslCerts: true,
         marionette: true
+      }
+    },
+    android : {
+      desiredCapabilities: {
+        browserName: 'chrome',
+        platformName: "ANDROID",
+        'goog:chromeOptions': {
+          w3c: false,
+          androidPackage: "com.android.chrome",
+          args: ["--disable-web-security", "--no-first-run"]
+          }
       }
     }
   }
