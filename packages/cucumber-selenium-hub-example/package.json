@@ -4,7 +4,7 @@
   "description": "Demonstration for using Nightwatch API from CucumberJS test runner",
   "main": "index.js",
   "scripts": {
-    "test": "cucumber-js --require-module @babel/register --require cucumber.conf.js --require step-definitions --format node_modules/cucumber-pretty --parallel=4"
+    "test": "cucumber-js --require-module @babel/register --require cucumber.conf.js --require step-definitions --format node_modules/cucumber-pretty --parallel=10"
   },
   "repository": "git@github.com:mucsi96/nightwatch-api.git",
   "author": "Igor Mucsicska <mucsi_96@yahoo.com>",

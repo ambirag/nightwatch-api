@@ -35,7 +35,21 @@ module.exports = {
       desiredCapabilities: {
         browserName: 'chrome',
         'goog:chromeOptions': {
-          w3c: false
+          w3c: false,
+          "args": [
+            "--load-extension=/User/ra.replay-poc/tree/main/BrowserExtensions/recorder",
+          ]
+        }
+      }
+    },
+    chrome_4444: {
+      desiredCapabilities: {
+        browserName: 'chrome',
+        'goog:chromeOptions': {
+          w3c: false,
+          "args": [
+            "--load-extension=/User/ra.replay-poc/tree/main/BrowserExtensions/recorder",
+          ]
         }
       }
     },
@@ -56,7 +70,12 @@ module.exports = {
     },
     firefox: {
       desiredCapabilities: {
+        "moz:firefoxOptions": {
+          "binary": "/opt/firefox-latest/firefox",
+        },
+        "log": {"level": "trace"},
         browserName: 'firefox',
+        platformName: "LINUX",
         javascriptEnabled: true,
         acceptSslCerts: true,
         marionette: true
@@ -66,6 +85,8 @@ module.exports = {
       desiredCapabilities: {
         browserName: 'chrome',
         platformName: "ANDROID",
+        adbExecTimeout: '90000',
+        ignoreHiddenApiPolicyError: 'true',
         'goog:chromeOptions': {
           w3c: false,
           androidPackage: "com.android.chrome",
