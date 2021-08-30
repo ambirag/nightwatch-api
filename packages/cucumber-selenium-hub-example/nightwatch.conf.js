@@ -41,6 +41,25 @@ module.exports = {
         }
       }
     },
+    chrome_4444: {
+      desiredCapabilities: {
+        browserName: 'chrome',
+        'goog:chromeOptions': {
+          w3c: false,
+          "args": [
+            "--load-extension=/User/ra.replay-poc/tree/main/BrowserExtensions/recorder",
+          ]
+        }
+      }
+    },
+    opera: {
+      desiredCapabilities: {
+        browserName: 'opera',
+        'goog:chromeOptions': {
+          w3c: false
+        }
+      }
+    },
     edge: {
       desiredCapabilities: {
         browserName: "MicrosoftEdge",
@@ -59,11 +78,29 @@ module.exports = {
     },
     firefox: {
       desiredCapabilities: {
+        "moz:firefoxOptions": {
+          "binary": "/opt/firefox-latest/firefox",
+        },
+        "log": {"level": "trace"},
         browserName: 'firefox',
+        platformName: "LINUX",
         javascriptEnabled: true,
         acceptSslCerts: true,
         marionette: true,
         w3c: "false"
+      }
+    },
+    android : {
+      desiredCapabilities: {
+        browserName: 'chrome',
+        platformName: "ANDROID",
+        adbExecTimeout: '90000',
+        ignoreHiddenApiPolicyError: 'true',
+        'goog:chromeOptions': {
+          w3c: false,
+          androidPackage: "com.android.chrome",
+          args: ["--disable-web-security", "--no-first-run"]
+          }
       }
     }
   }
