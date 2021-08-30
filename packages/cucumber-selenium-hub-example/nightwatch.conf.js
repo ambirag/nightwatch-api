@@ -14,6 +14,7 @@ module.exports = {
         : {
             port: 443,
             start_process: false,
+            use_ssl : true,
             server_path: seleniumServer.path,
             host: `${process.env.gridhost}`,
             cli_args: {
@@ -34,6 +35,7 @@ module.exports = {
     chrome: {
       desiredCapabilities: {
         browserName: 'chrome',
+        "platformName": "linux",
         'goog:chromeOptions': {
           w3c: false
         }
@@ -43,7 +45,16 @@ module.exports = {
       desiredCapabilities: {
         browserName: "MicrosoftEdge",
         platformName: "LINUX",
-        w3c: "true"
+        'goog:chromeOptions': {
+          w3c: true
+        }
+      }
+    },
+    opera: {
+      desiredCapabilities: {
+        browserName: "opera",
+        platformName: "LINUX",
+        w3c: "false"
       }
     },
     firefox: {
@@ -51,7 +62,8 @@ module.exports = {
         browserName: 'firefox',
         javascriptEnabled: true,
         acceptSslCerts: true,
-        marionette: true
+        marionette: true,
+        w3c: "false"
       }
     }
   }
