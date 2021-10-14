@@ -3,6 +3,10 @@ const chromeDriver = require('chromedriver');
 const geckoDriver = require('geckodriver');
 
 module.exports = {
+  test_workers: {
+    enabled: true,
+    workers: '50'
+  },
   test_settings: {
     default: {
       selenium: process.env.containerized
@@ -12,9 +16,9 @@ module.exports = {
             use_ssl : true
           }
         : {
-            port: 443,
+            port: 4444,
             start_process: false,
-            use_ssl : true,
+            use_ssl : false,
             server_path: seleniumServer.path,
             host: `${process.env.gridhost}`,
             cli_args: {
@@ -37,7 +41,8 @@ module.exports = {
         browserName: 'chrome',
         "platformName": "linux",
         'goog:chromeOptions': {
-          w3c: false
+          w3c: true,
+          args: ['--window-size=1920,1080 --disable-gpu --no-sandbox']
         }
       }
     },
@@ -94,7 +99,7 @@ module.exports = {
       desiredCapabilities: {
         browserName: 'chrome',
         platformName: "ANDROID",
-        adbExecTimeout: '90000',
+        adbExecTimeout: '900000',
         ignoreHiddenApiPolicyError: 'true',
         'goog:chromeOptions': {
           w3c: false,
@@ -102,6 +107,15 @@ module.exports = {
           args: ["--disable-web-security", "--no-first-run"]
           }
       }
-    }
+    },
+    android1 : {
+        desiredCapabilities: {
+            browserName: "Chrome",
+            platformName: "Android",
+            device: "Android",
+            deviceName: "Samsung Galaxy S6"
+        }
+    },
+
   }
 };
